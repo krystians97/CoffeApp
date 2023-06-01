@@ -3,6 +3,19 @@
 @{
     ViewData["Title"] = "Index";
 }
+<style>
+    .coffee-wrapper {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .coffee-item {
+        padding: 10px;
+        border: 1px solid black;
+        border-radius: 10px;
+        margin: 10px;
+        
+    }
+</style>
 
 <h1>Index</h1>
 
@@ -49,7 +62,7 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Supplier.Id)
+                @Html.DisplayFor(modelItem => item.Supplier.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsAvailable)
@@ -70,3 +83,19 @@
 }
     </tbody>
 </table>
+
+<div class="coffee-wrapper">
+    @foreach (var item in Model) {
+        <div class="coffee-item">
+            <img src="" />
+            <div>
+                <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
+                <h4>@Html.DisplayFor(modelItem => item.Price) zł</h4>
+                <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                <a asp-action="Order" asp-route-id="@item.Id"><button>Zamów</button></a>
+                
+            </div>
+        </div>
+       
+}
+</div>

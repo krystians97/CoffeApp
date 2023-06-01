@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace CoffeApp.Data.Migrations
+namespace CoffeApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -22,7 +22,7 @@ namespace CoffeApp.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("CoffeApp.Models.Offers", b =>
+            modelBuilder.Entity("CoffeApp.Models.Offer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -88,7 +88,7 @@ namespace CoffeApp.Data.Migrations
                     b.ToTable("Order");
                 });
 
-            modelBuilder.Entity("CoffeApp.Models.Suppliers", b =>
+            modelBuilder.Entity("CoffeApp.Models.Supplier", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -240,14 +240,14 @@ namespace CoffeApp.Data.Migrations
                         {
                             Id = "02174cf0–9412–4cfe-afbf-59f706d72cf6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "84ffbe1f-957c-4e02-af8c-ac70ced7d18b",
+                            ConcurrencyStamp = "88ed3af4-325a-45e3-9379-0c0943bed460",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHRpdG/7KIKjER/ukeSlWakijQWS8PkoteQ6sKu1UAr9XNwy+CTynneYOvUzFkqivA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPiEONcTJj7kD+ZZjfw7eutPlrerBibIH3QsxOzyUH8O7vrZsbGtzrBuYERyeXHL6g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "894e5dba-c1a6-40bc-aa6d-6e4cbef0aa0a",
+                            SecurityStamp = "0d583aa6-1304-45c9-9667-bf6740a734e1",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -345,9 +345,9 @@ namespace CoffeApp.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("CoffeApp.Models.Offers", b =>
+            modelBuilder.Entity("CoffeApp.Models.Offer", b =>
                 {
-                    b.HasOne("CoffeApp.Models.Suppliers", "Supplier")
+                    b.HasOne("CoffeApp.Models.Supplier", "Supplier")
                         .WithMany()
                         .HasForeignKey("SupplierId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -358,7 +358,7 @@ namespace CoffeApp.Data.Migrations
 
             modelBuilder.Entity("CoffeApp.Models.Order", b =>
                 {
-                    b.HasOne("CoffeApp.Models.Offers", "Offer")
+                    b.HasOne("CoffeApp.Models.Offer", "Offer")
                         .WithMany()
                         .HasForeignKey("OfferId")
                         .OnDelete(DeleteBehavior.Cascade)
