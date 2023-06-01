@@ -9,20 +9,50 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
     .coffee-item {
-        padding: 10px;
-        border: 1px solid black;
         border-radius: 10px;
         margin: 10px;
-        
+        background-color: #B98753;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        overflow: hidden;
+
     }
+    .coffee-button {
+          background-color: #442E26;
+          color: white;
+          font-weight: 700;
+          padding: 10px;
+          border-radius: 10px;
+          text-decoration: none;
+          box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+          margin: 5px;
+          float:right;
+          display: block;
+         
+}
+.coffe-button-details {
+    background-color: #7E5233;
+}
+.item-body {
+            padding: 10px;
+}
+.item-image{
+  
+        width:100%;
+        object-fit: cover;
+        max-height: 270px;
+
+}
+
+.create-button  {
+    float:left;
+    color: white;
+    text-decoration: none;
+    display:flex;
+    float: right;
+}
 </style>
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+@*<table class="table">
     <thead>
         <tr>
             <th>
@@ -82,20 +112,28 @@
         </tr>
 }
     </tbody>
-</table>
+</table>*@
 
 <div class="coffee-wrapper">
     @foreach (var item in Model) {
         <div class="coffee-item">
-            <img src="" />
-            <div>
+            <img class="item-image" src="@Html.DisplayFor(modelItem => item.Link)" />
+            <div class="item-body">
                 <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
                 <h4>@Html.DisplayFor(modelItem => item.Price) zł</h4>
                 <p>@Html.DisplayFor(modelItem => item.Description)</p>
-                <a asp-action="Order" asp-route-id="@item.Id"><button>Zamów</button></a>
+                <a class="coffee-button" asp-action="Order" asp-route-id="@item.Id">Zamów</a>
+                <a class="coffee-button coffe-button-details" asp-action="Details" asp-route-id="@item.Id">Szczegóły</a> 
                 
             </div>
         </div>
        
 }
+
 </div>
+@*
+
+
+*@<p>
+    <a class="create-button coffee-button " asp-action="Create">Create New</a>
+</p>
