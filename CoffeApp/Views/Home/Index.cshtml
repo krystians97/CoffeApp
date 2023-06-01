@@ -1,8 +1,39 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<style>
+    .main-image {
+    width: 100%;
+}
+    .coffee-wrapper {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .coffee-item {
+        border-radius: 10px;
+        margin: 10px;
+        background-color: #B98753;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        overflow: hidden;
+        padding:20px;
+        margin-top:-25px;
+        
 
+    }
+
+ .text-styles {
+     text-align:justify;
+     font-size:20px;
+      font-weight: bold;
+ }
+</style>
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    
+    <div>
+
+        <p class=" text-styles">
+          CoffeeApp - aplikacja dla kawowych hedonistów. Wybieraj i dostosowuj idealną kawę, zamawiaj z łatwością. Bez kolejek, bez stresu. Najwyższa jakość, elegancja, wygoda. Pobierz i ciesz się nowoczesnym sposobem na kawową przyjemność!poziomie z CoffeeApp!
+        </p>
+        <img src="https://www.thedecoratorsforum.com/wp-content/uploads/2022/05/coffee-2-e1654787754668.jpg" />
+    </div>
 </div>
