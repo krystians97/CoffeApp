@@ -51,6 +51,7 @@ namespace CoffeApp.Data
             });
         }
         public DbSet<CoffeApp.Models.Supplier>? Suppliers { get; set; }
+        
         public DbSet<CoffeApp.Models.Order>? Order { get; set; }
     }
 }

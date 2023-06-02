@@ -1,0 +1,43 @@
+﻿@using Microsoft.AspNetCore.Mvc.Rendering
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model CoffeApp.Models.Order
+
+@{
+    ViewData["title"] = "Order";
+}
+
+<h1>Wybierz dodatkowe opcje</h1>
+
+@using (Html.BeginForm("YourOrder", "Offer", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-group">
+        <label for="sugar">cukier (ilość łyżeczek):</label>
+        <select class="form-control" id="sugar" name="sugar">
+            @for (int i = 0; i <= 5; i++)
+            {
+                <option value="@i">@i</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="milk">mleko:</label>
+        <select class="form-control" id="milk" name="milk">
+            <option value="tak">tak</option>
+            <option value="nie">nie</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="doubleportion">podwójna porcja:</label>
+        <select class="form-control" id="doubleportion" name="doubleportion">
+            <option value="tak">tak</option>
+            <option value="nie">nie</option>
+        </select>
+    </div>
+
+    //<a class="coffee-button coffe-button-details" asp-action="YourOrder" asp-controller="Offer">Przejdź do podsumowania zamówienia</a>
+    <input type="submit" value="Zamawiam!" class="btn btn-primary" />
+}

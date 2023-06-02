@@ -4,6 +4,7 @@ using CoffeApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoffeApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230602173050_core4")]
+    partial class core4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -237,14 +239,14 @@ namespace CoffeApp.Migrations
                         {
                             Id = "02174cf0–9412–4cfe-afbf-59f706d72cf6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c3ac5367-20ce-4449-a98a-0d1b98dbfb87",
+                            ConcurrencyStamp = "34646a76-a50f-46d1-b077-83432f33191f",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEarasgDgvQGefiThg/zh+DXQG0uVNYgyBid41+kUKtHoDoBp2y4HyoZzFlOSQSthA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEC0kfFd/8NniNV7JTr8zDe7ILEWpDoScw/llz4DX3b9QcUG2+rZSrYg6efNeKMIamw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a9f00787-2407-4800-8a1d-472f7b65c627",
+                            SecurityStamp = "7fda2aae-29ce-4030-9b47-f30165a1ada4",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });

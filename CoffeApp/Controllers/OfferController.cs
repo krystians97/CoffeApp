@@ -4,17 +4,19 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace CoffeApp.Controllers
 {
-    public class OffersController : Controller
+    public class OfferController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public OffersController(ApplicationDbContext context)
+        public OfferController(ApplicationDbContext context)
         {
             _context = context;
         }
+        
 
         // GET: Offers
         public async Task<IActionResult> Index()
@@ -34,6 +36,7 @@ namespace CoffeApp.Controllers
             var offer = await _context.Offer
                 .Include(o => o.Supplier)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (offer == null)
             {
                 return NotFound();
@@ -122,6 +125,12 @@ namespace CoffeApp.Controllers
             return View(offer);
         }
 
+        private bool OfferExists(int id)
+        {
+            return _context.Offer.Any(e => e.Id == id);
+
+        }
+
         // GET: Offers/Delete/5
         [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> Delete(int? id)
@@ -164,9 +173,52 @@ namespace CoffeApp.Controllers
 
 
 
-        private bool OfferExists(int id)
+
+
+        // GET: Offers/Order/Create
+        [HttpGet]
+        public IActionResult Order(int orderId)
         {
-            return (_context.Offer?.Any(e => e.Id == id)).GetValueOrDefault();
+            ViewData["OrderId"] = new SelectList(_context.Set<Offer>(), "Id", "Title", orderId);
+            var extras = new Order { OfferId = orderId }; // Tworzenie nowej instancji modelu Order z ustawionym OrderId
+            return View("Order", extras);
         }
+        public IActionResult YourOrder(int orderId)
+        {
+            if (orderId == null || _context.Order == null)
+            {
+                return NotFound();
+            }
+
+            var order = _context.Order.Where(o => o.Id == orderId).First();
+
+
+            if (order == null)
+            {
+                return NotFound();
+            }
+
+            return View("YourOrder", order);
+        }
+
+
+        // POST: Offers/Extras/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> YourOrder( Order order)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(order);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            
+            return View("YourOrder",order);
+        }
+      
+
+
     }
+
 }

@@ -1,0 +1,38 @@
+﻿@model CoffeApp.Models.Order
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Twoje zamówienia";
+   
+}
+@using (Html.BeginForm("YourOrder", "Offer", FormMethod.Post))
+{
+<h1>Twoje zamówienia</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order Number</th>
+            <th>Coffee Description</th>
+            <th>Supplier</th>
+            <th>Price</th>
+            <th>Sugar</th>
+            <th>Milk</th>
+            <th>Double Portion</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.Id</td>
+            <td>@(Model.Offer != null ? Model.Offer.Title : "")</td>
+            <td>@(Model.Offer != null ? Model.Offer.Supplier?.Id : "")</td>
+            <td>@(Model.Offer != null ? Model.Offer.Price : "")</td>
+            <td>@Model.Sugar</td>
+            <td>@Model.Milk</td>
+            <td>@Model.DoublePortion</td>
+        </tr>
+    </tbody>
+</table>
+    @Html.AntiForgeryToken()
+    <input type="submit" value="Zamawiam!" class="btn btn-primary" />
+}

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoffeApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230601160830_init1")]
-    partial class init1
+    [Migration("20230602184820_core6")]
+    partial class core6
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -68,24 +68,21 @@ namespace CoffeApp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("End")
-                        .HasColumnType("datetime2");
+                    b.Property<bool>("DoublePortion")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Milk")
+                        .HasColumnType("bit");
 
                     b.Property<int>("OfferId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Start")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Sugar")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("OfferId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Order");
                 });
@@ -242,14 +239,14 @@ namespace CoffeApp.Migrations
                         {
                             Id = "02174cf0–9412–4cfe-afbf-59f706d72cf6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "88ed3af4-325a-45e3-9379-0c0943bed460",
+                            ConcurrencyStamp = "c3ac5367-20ce-4449-a98a-0d1b98dbfb87",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPiEONcTJj7kD+ZZjfw7eutPlrerBibIH3QsxOzyUH8O7vrZsbGtzrBuYERyeXHL6g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEarasgDgvQGefiThg/zh+DXQG0uVNYgyBid41+kUKtHoDoBp2y4HyoZzFlOSQSthA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0d583aa6-1304-45c9-9667-bf6740a734e1",
+                            SecurityStamp = "a9f00787-2407-4800-8a1d-472f7b65c627",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -366,15 +363,7 @@ namespace CoffeApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Offer");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

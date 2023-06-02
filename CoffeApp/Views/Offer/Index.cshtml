@@ -122,7 +122,10 @@
                 <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
                 <h4>@Html.DisplayFor(modelItem => item.Price) zł</h4>
                 <p>@Html.DisplayFor(modelItem => item.Description)</p>
-                <a class="coffee-button" asp-action="Order" asp-route-id="@item.Id">Zamów</a>
+                <a href="@Url.Action("Order", "Offer", new { orderId = item.Id })" class="btn btn-primary">zamów</a>
+
+                @*<a class="coffee-button" asp-action="extras" asp-route-id="@item.id">zamów</a>*@
+
                 <a class="coffee-button coffe-button-details" asp-action="Details" asp-route-id="@item.Id">Szczegóły</a> 
                 
             </div>
@@ -131,9 +134,9 @@
 }
 
 </div>
-@*
 
 
-*@<p>
+
+<p>
     <a class="create-button coffee-button " asp-action="Create">Create New</a>
 </p>

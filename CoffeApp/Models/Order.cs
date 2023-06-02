@@ -1,19 +1,19 @@
-ï»¿using Microsoft.AspNetCore.Identity;
-using System.ComponentModel.DataAnnotations;
-
 namespace CoffeApp.Models
 {
     public class Order
     {
         public int Id { get; set; }
-        [Display(Name = "Data rozpoczÄ™cia")]
-        public DateTime Start { get; set; }
-        [Display(Name = "Data zakoÅ„czenia")]
-        public DateTime End { get; set; }
-        public virtual string Name { get { return Start.ToString() + " - " + End.ToString(); } }
+        public int Sugar { get; set; }
+        public bool Milk { get; set; }
+        public bool DoublePortion { get; set; }
         public int OfferId { get; set; }
-        public Offer? Offer { get; set; }
-        public string UserId { get; set; }
-        public IdentityUser User { get; set; }
+        virtual public Offer? Offer { get; set; }
+
+
+        // Odwo³anie siê do danych z modelu Offer
+        public string? OfferTitle => Offer?.Title;
+        public string? OfferSupplier => Offer?.Supplier?.Name;
+        public string? OfferDescription => Offer?.Description;
+        public string? OfferPrice => Offer?.Description;
     }
 }
