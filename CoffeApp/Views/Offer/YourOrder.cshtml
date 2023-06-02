@@ -6,33 +6,31 @@
     ViewData["Title"] = "Twoje zamówienia";
    
 }
+<style>
+        .coffee-inform {
+          background-color: #442E26;
+          color: white;
+          font-weight: 700;
+          font-size: 20px;
+          padding: 10px;
+          border-radius: 10px;
+          text-decoration: none;
+          box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+           margin: auto;
+           width: 70%;
+           padding: 50px;
+         
+}
+</style>
 @using (Html.BeginForm("YourOrder", "Offer", FormMethod.Post))
 {
-<h1>Twoje zamówienia</h1>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Order Number</th>
-            <th>Coffee Description</th>
-            <th>Supplier</th>
-            <th>Price</th>
-            <th>Sugar</th>
-            <th>Milk</th>
-            <th>Double Portion</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>@Model.Id</td>
-            <td>@(Model.Offer != null ? Model.Offer.Title : "")</td>
-            <td>@(Model.Offer != null ? Model.Offer.Supplier?.Id : "")</td>
-            <td>@(Model.Offer != null ? Model.Offer.Price : "")</td>
-            <td>@Model.Sugar</td>
-            <td>@Model.Milk</td>
-            <td>@Model.DoublePortion</td>
-        </tr>
-    </tbody>
-</table>
+
+
     @Html.AntiForgeryToken()
-    <input type="submit" value="Zamawiam!" class="btn btn-primary" />
+
+
+    <div class="coffee-inform d-flex justify-content-center">
+        Twoje zamówienie zostało złożone. Zapłać przy kasie nr 3 :)
+    </div>
+   
 }

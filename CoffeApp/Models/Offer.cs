@@ -4,6 +4,7 @@ namespace CoffeApp.Models
 {
     public class Offer
     {
+      
         public int Id { get; set; }
         [Display(Name = "Rodzaj kawy")]
         public string? Title { get; set; }
