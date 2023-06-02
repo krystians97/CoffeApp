@@ -17,3 +17,4 @@ namespace CoffeApp.Models
         public string? OfferPrice => Offer?.Description;
     }
 }
+

@@ -53,10 +53,8 @@
 }
 </style>
 
-@*<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+@*@**@
+@*<table class="table">
     <thead>
         <tr>
             <th>
@@ -91,9 +89,9 @@
         </tr>
 }
     </tbody>
-</table>*@
+</table>
 
-<div class="coffee-wrapper">
+*@<div class="coffee-wrapper">
     @foreach (var item in Model) {
         <div class="coffee-item">
             <img class="item-image" src="@Html.DisplayFor(modelItem => item.Mail)" />
@@ -101,15 +99,19 @@
                 <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
                 <h4>@Html.DisplayFor(modelItem => item.PhoneNumer) zł</h4>
 
-               @* <a href="@Url.Action("Order", "Offer", new { orderId = item.Id })" class="btn btn-primary">zamów</a>*@
+              @* <a href="@Url.Action("Order", "Offer", new { orderId = item.Id })" class="btn btn-primary">zamów</a>*@
 
                 @*<a class="coffee-button" asp-action="extras" asp-route-id="@item.id">zamów</a>*@
 
                 <a class="coffee-button coffe-button-details" asp-action="Details" asp-route-id="@item.Id">Szczegóły</a> 
-                
+                <a class="coffee-button coffe-button-details" asp-action="Delete" asp-route-id="@item.Id">Usuń</a> 
             </div>
         </div>
        
 }
 
 </div>
+
+ <p class="coffee-button">
+    <a class="coffee-button" asp-action="Create">Create New</a>
+</p

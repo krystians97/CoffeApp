@@ -22,6 +22,11 @@
          
 }
 </style>
+
+
+
+
+
 @using (Html.BeginForm("YourOrder", "Offer", FormMethod.Post))
 {
 
@@ -30,7 +35,20 @@
 
 
     <div class="coffee-inform d-flex justify-content-center">
-        Twoje zamówienie zostało złożone. Zapłać przy kasie nr 3 :)
+         "Twoje zamówienie zostało złożone. Zapłać przy kasie nr 7 :)
     </div>
    
 }
+<script>
+    // Generowanie losowej liczby od 1 do 10
+    var randomNumber = Math.floor(Math.random() * 10) + 1;
+
+    // Zmiana numeru kasy w divie
+    var coffeeInformDiv = randomNumber;
+
+    // Pobranie elementu div
+    var coffeeInformDivElement = document.querySelector('.coffee-inform');
+
+    // Zaktualizowanie zawartości diva
+    coffeeInformDivElement.innerHTML = 'Twoje zamówienie zostało złożone. Zapłać przy kasie nr ' + coffeeInformDiv + ' :)';
+</script>
